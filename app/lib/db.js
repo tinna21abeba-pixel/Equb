@@ -7,7 +7,8 @@ const file = path.join(process.cwd(), "data", "db.json");
 export async function readDb() {
   try {
     return JSON.parse(await fs.readFile(file, "utf8"));
-  } catch {
+  } catch (error) {
+    if (error.code !== "ENOENT") throw error;
     return { users: [], equbs: [] };
   }
 }

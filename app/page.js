@@ -1,95 +1,53 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
+import PublicHeader from "@/components/PublicHeader";
 
-export default function Home() {
+export const metadata = {
+  title: { absolute: "Equb - Save together, one pot at a time" },
+  description:
+    "Create an Equb for your friends, family or colleagues. Record contributions in Birr and draw the winner of each round fairly.",
+};
+
+const steps = [
+  { title: "Gather the group", text: "Create your Equb and add each member with an Ethiopian phone number." },
+  { title: "Collect each round", text: "Mark every member as paid when their contribution arrives." },
+  { title: "Pay out the pot", text: "Draw a winner by lottery or follow the agreed order of members." },
+  { title: "Repeat until done", text: "Past winners are excluded until every member has received the pot." },
+];
+
+export default function HomePage() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
+    <>
+      <PublicHeader />
+      <main>
+        <section className="hero">
+          <span className="hero-tag">Rotating Savings Circle</span>
+          <h1>Run your Equb with complete clarity on every round</h1>
+          <p>
+            Equb is the rotating savings tradition where members contribute together and one member receives the full pot each round. Keep it organized, fair, and transparent.
+          </p>
+          <div className="hero-actions">
+            <Link href="/signup" className="button">
+              Start your Equb
+            </Link>
+            <Link href="/signin" className="button button-secondary">
+              Sign in
+            </Link>
+          </div>
+        </section>
+        <section className="page">
+          <h2 className="card-title">How it works</h2>
+          <p className="card-subtitle">A straightforward four-step process for organizing community savings</p>
+          <ol className="steps">
+            {steps.map((step) => (
+              <li key={step.title}>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
       </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      <footer>Equb savings organizer. All amounts in Ethiopian Birr (ETB).</footer>
+    </>
   );
 }
