@@ -9,7 +9,7 @@ export default function RoundProgress({ equbId, initial }) {
 
   useEffect(() => {
     setStatus(initial);
-  }, [initial]);
+  }, [initial]); 
 
   useEffect(() => {
     const timer = setInterval(async () => {
