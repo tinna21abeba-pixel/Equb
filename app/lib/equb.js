@@ -1,5 +1,5 @@
 import { randomInt } from "crypto";
-import { getPlanById } from "@/lib/plans";
+import { getPlanById } from "./plans.js";
 
 export const frequencyLabels = {
   daily: "every day",

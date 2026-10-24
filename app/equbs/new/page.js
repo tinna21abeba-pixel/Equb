@@ -1,26 +1,31 @@
 import Link from "next/link";
-import ActionForm from "@/components/ActionForm";
-import { createEqub } from "@/app/actions";
-import { equbFields } from "@/lib/fields";
+import { ArrowLeft } from "lucide-react";
+import NewEqubForm from "@/components/NewEqubForm";
 import { requireUser } from "@/lib/session";
 
-export const metadata = { title: "New equb" };
+export const metadata = {
+  title: "Create New Equb",
+  description: "Select an Ethiopian Equb plan and configure members, frequency, and rules.",
+};
 
 export default async function NewEqubPage() {
   await requireUser();
 
   return (
-    <div className="narrow">
+    <div className="new-equb-page-wrap">
       <Link href="/equbs" className="back-link">
-        Back to all equbs
+        <ArrowLeft size={16} />
+        <span>Back to Equb Groups</span>
       </Link>
-      <div className="card">
-        <h1 className="card-title">Create new equb</h1>
-        <p className="card-subtitle">
-          Configure contribution details, collection frequency, and winner selection method.
+
+      <div className="page-header-block">
+        <h1 className="page-title">Establish New Equb</h1>
+        <p className="page-subtitle">
+          Configure a trustworthy rotating savings group tailored for your community or workplace.
         </p>
-        <ActionForm action={createEqub} fields={equbFields} submit="Create equb" />
       </div>
+
+      <NewEqubForm />
     </div>
   );
 }

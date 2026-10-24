@@ -13,4 +13,15 @@ export function middleware(request) {
   return NextResponse.redirect(url);
 }
 
-export const config = { matcher: ["/equbs/:path*", "/api/equbs/:path*"] };
+export const config = {
+  matcher: [
+    "/equbs/:path*",
+    "/dashboard/:path*",
+    "/members/:path*",
+    "/contributions/:path*",
+    "/lottery/:path*",
+    "/payouts/:path*",
+    "/settings/:path*",
+    "/api/equbs/:path*",
+  ],
+};

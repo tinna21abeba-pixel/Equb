@@ -1,4 +1,5 @@
 import "./globals.css";
+import PublicHeader from "./components/PublicHeader";
 
 const site = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -16,7 +17,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+       
+        {children}</body>
     </html>
   );
 }

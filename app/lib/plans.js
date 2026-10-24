@@ -1,8 +1,4 @@
-/**
- * Centralized Ethiopian Equb Plans Configuration
- * Defines the standard 6 plans and customizable options.
- * Stored centrally so administrators and organizers can configure values.
- */
+
 
 export const EQUB_PLANS = [
   {
@@ -13,7 +9,7 @@ export const EQUB_PLANS = [
     frequency: "daily",
     maxMembers: 50,
     lotteryFrequency: "Daily",
-    targetPool: 15000, // 300 ETB * 50 members
+    targetPool: 15000, 
     winnersPerDraw: 1,
     isMembershipConfigurable: false,
     isContributionConfigurable: false,
@@ -51,7 +47,7 @@ export const EQUB_PLANS = [
     id: "biweekly-2000",
     name: "Biweekly Draw Equb — 2,000 ETB",
     tier: "Biweekly Flex",
-    contributionAmount: 2000, // Contributed weekly (2,000 ETB/wk = 4,000 ETB per 2-week cycle)
+    contributionAmount: 2000, 
     effectiveRoundAmount: 4000,
     frequency: "biweekly",
     maxMembers: 25, // Configurable default
@@ -80,11 +76,11 @@ export const EQUB_PLANS = [
     id: "monthly-premium",
     name: "Monthly Equb — Premium",
     tier: "Monthly Executive",
-    contributionAmount: 5000, // Default suggested
+    contributionAmount: 5000,
     frequency: "monthly",
-    maxMembers: 20, // Configurable default
+    maxMembers: 20,
     lotteryFrequency: "Monthly",
-    targetPool: 100000, // 5,000 * 20
+    targetPool: 100000, 
     winnersPerDraw: 1,
     isMembershipConfigurable: true,
     isContributionConfigurable: true,
@@ -94,17 +90,11 @@ export const EQUB_PLANS = [
 
 export const CUSTOM_PLAN_ID = "custom";
 
-/**
- * Retrieve plan definition by id
- */
 export function getPlanById(planId) {
   if (!planId || planId === CUSTOM_PLAN_ID) return null;
   return EQUB_PLANS.find((p) => p.id === planId) ?? null;
 }
 
-/**
- * Calculate expected pot / target pool based on plan or custom parameters
- */
 export function getExpectedTargetPool(planId, contributionAmount, memberCount) {
   const plan = getPlanById(planId);
   if (plan) {
@@ -114,9 +104,6 @@ export function getExpectedTargetPool(planId, contributionAmount, memberCount) {
   return Number(contributionAmount || 0) * Number(memberCount || 0);
 }
 
-/**
- * Get human-readable frequency label
- */
 export const PLAN_FREQUENCY_LABELS = {
   daily: "Daily",
   weekly: "Weekly",

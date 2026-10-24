@@ -1,72 +1,99 @@
 import Link from "next/link";
+import { PlusCircle, Layers, Users, Wallet, Trophy } from "lucide-react";
 import { listEqubs } from "@/lib/queries";
 import { requireUser } from "@/lib/session";
-import { frequencyLabels, statusOf } from "@/lib/equb";
+import { currentRound, dueDate, statusOf } from "@/lib/equb";
 import { formatETB } from "@/lib/format";
+import EqubListFilters from "@/components/EqubListFilters";
+
+export const metadata = {
+  title: "Equb Groups",
+  description: "Manage your rotating savings circles, view capacity, and track contributions.",
+};
 
 export default async function EqubsPage() {
   const user = await requireUser();
   const equbs = await listEqubs(user.id);
 
+  const statuses = {};
+  const dueDates = {};
+  let totalMembers = 0;
+  let totalPot = 0;
+  let totalCollected = 0;
+  let activeGroupsCount = 0;
+
+  for (const equb of equbs) {
+    const status = statusOf(equb);
+    statuses[equb.id] = status;
+    const round = currentRound(equb);
+    if (round) {
+      dueDates[equb.id] = dueDate(equb, round.number);
+    }
+    totalMembers += equb.members.length;
+    totalPot += status.pot || 0;
+    totalCollected += status.collected || 0;
+    if (!status.complete) activeGroupsCount++;
+  }
+
   return (
-    <>
-      <div className="row">
+    <div className="equbs-page-container">
+      {/* Top Banner & Action */}
+      <div className="page-header-row">
         <div>
-          <h1 className="page-title">Your equbs</h1>
-          <p className="page-subtitle">Manage your rotating savings circles and track member contributions</p>
+          <h1 className="page-title">Equb Groups</h1>
+          <p className="page-subtitle">
+            Overview and governance of all registered community rotating savings circles.
+          </p>
         </div>
         <Link href="/equbs/new" className="button">
-          New equb
+          <PlusCircle size={16} />
+          <span>New Equb</span>
         </Link>
       </div>
 
-      {equbs.length === 0 ? (
-        <section className="card empty-state">
-          <h2>No equbs created yet</h2>
-          <p>Create your first rotating savings circle, invite members, and start tracking contributions.</p>
-          <Link href="/equbs/new" className="button">
-            Create an equb
-          </Link>
-        </section>
-      ) : (
-        <div className="grid">
-          {equbs.map((equb) => {
-            const status = statusOf(equb);
-            const progress =
-              status.members === 0
-                ? "No members yet"
-                : status.complete
-                  ? "Completed"
-                  : `Round ${status.round} of ${status.totalRounds}`;
-            const badgeClass = status.complete
-              ? "badge badge-primary"
-              : status.members === 0
-                ? "badge badge-muted"
-                : "badge badge-primary";
-
-            return (
-              <Link key={equb.id} href={`/equbs/${equb.id}`} className="card tile">
-                <div className="tile-top">
-                  <div className="card-header-row">
-                    <h2 className="tile-heading">{equb.name}</h2>
-                    <span className={badgeClass}>{progress}</span>
-                  </div>
-                  <p className="tile-meta">
-                    {formatETB(equb.amount)} {frequencyLabels[equb.frequency]}
-                  </p>
-                  <p className="tile-meta">
-                    {equb.members.length} {equb.members.length === 1 ? "member" : "members"}
-                  </p>
-                </div>
-                <div className="tile-bottom">
-                  <span className="tile-pot-label">Total pot</span>
-                  <span className="tile-pot-value">{formatETB(status.pot)}</span>
-                </div>
-              </Link>
-            );
-          })}
+      {/* Metrics Row */}
+      <div className="stats-grid">
+        <div className="stat-card">
+          <div className="stat-card-header">
+            <span className="stat-card-title">Active Equbs</span>
+            <Layers size={18} className="stat-card-icon" />
+          </div>
+          <div className="stat-card-value">{activeGroupsCount}</div>
+          <div className="stat-card-hint">
+            {equbs.length} total registered {equbs.length === 1 ? "group" : "groups"}
+          </div>
         </div>
-      )}
-    </>
+
+        <div className="stat-card">
+          <div className="stat-card-header">
+            <span className="stat-card-title">Enrolled Members</span>
+            <Users size={18} className="stat-card-icon" />
+          </div>
+          <div className="stat-card-value">{totalMembers}</div>
+          <div className="stat-card-hint">Across all active savings groups</div>
+        </div>
+
+        <div className="stat-card">
+          <div className="stat-card-header">
+            <span className="stat-card-title">Target Round Pool</span>
+            <Wallet size={18} className="stat-card-icon" />
+          </div>
+          <div className="stat-card-value">{formatETB(totalPot)}</div>
+          <div className="stat-card-hint">Combined expected round pot</div>
+        </div>
+
+        <div className="stat-card">
+          <div className="stat-card-header">
+            <span className="stat-card-title">Collected Funds</span>
+            <Trophy size={18} className="stat-card-icon" />
+          </div>
+          <div className="stat-card-value">{formatETB(totalCollected)}</div>
+          <div className="stat-card-hint">Verified contributions this cycle</div>
+        </div>
+      </div>
+
+      {/* Filterable Equb List */}
+      <EqubListFilters equbs={equbs} statuses={statuses} dueDates={dueDates} />
+    </div>
   );
 }

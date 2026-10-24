@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { Lock } from "lucide-react";
 import ActionForm from "@/components/ActionForm";
-import PublicHeader from "@/components/PublicHeader";
 import { signIn } from "@/app/actions";
 import { signInFields } from "@/lib/fields";
 import { getUser } from "@/lib/session";
@@ -18,19 +18,24 @@ export default async function SignInPage({ searchParams }) {
 
   return (
     <>
-      <PublicHeader />
+  
       <main className="narrow">
-        <div className="card">
-          <h1 className="card-title">Sign in</h1>
-          <p className="card-subtitle">Access your account to manage your equb groups and rounds</p>
+        <div className="card card-emerald-accent">
+          <div className="card-header-row" style={{ marginBottom: "0.5rem" }}>
+            <h1 className="card-title">Organizer Sign In</h1>
+            <div className="brand-icon-box" style={{ width: "30px", height: "30px" }}>
+              <Lock size={15} />
+            </div>
+          </div>
+          <p className="card-subtitle">Access your account to manage your Equb groups, members, and lottery rounds.</p>
           <ActionForm
             action={signIn}
             fields={signInFields}
             submit="Sign in"
             hidden={{ next: safeNext(next) }}
           />
-          <p className="hint">
-            New here? <Link href="/signup">Create an account</Link>
+          <p className="hint" style={{ marginTop: "1rem", textAlign: "center" }}>
+            New organizer? <Link href="/signup">Create an account</Link>
           </p>
         </div>
       </main>
