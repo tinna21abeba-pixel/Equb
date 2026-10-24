@@ -45,7 +45,7 @@ export default function HomePage() {
           <div className="hero-content">
           <h1>Simplify Your Equb. Strengthen Trust.</h1>
           <p>
-           Empowering Ethiopia's most trusted savings tradition. 
+           Empowering Ethiopia&apos;s most trusted savings tradition. 
            Transform your Equb with digital transparency, tamper-proof records, 
            fair automated lottery draws, and secure payout tracking—bringing confidence 
            and convenience to every member.

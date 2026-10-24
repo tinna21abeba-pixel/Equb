@@ -11,7 +11,7 @@ import { requireUser } from "@/lib/session";
 import { findEqub } from "@/lib/queries";
 import {currentRound,dueDate,eligibleMembers,frequencyLabels, isLocked,statusOf,getPaymentRecord,roundContributionAmount} from "@/lib/equb";
 import { formatDate, formatDateTime, formatETB } from "@/lib/format";
-import {ArrowLeft,Users, Calendar, Wallet, Trophy,ShieldCheck,CheckCircle2,Clock,AlertCircle,PauseCircleTrash2,Receipt,} from "lucide-react";
+import {ArrowLeft,Users,Trash2, Wallet, Trophy,ShieldCheck,CheckCircle2,Clock,AlertCircle,PauseCircle,Receipt,} from "lucide-react";
 
 export default async function EqubDetailPage({ params }) {
   const user = await requireUser();
