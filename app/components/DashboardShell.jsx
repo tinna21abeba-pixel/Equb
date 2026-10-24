@@ -38,7 +38,7 @@ export default function DashboardShell({ user, children }) {
               <Landmark className="brand-svg" size={20} />
             </div>
             <div>
-              <span className="brand-title"> Unity Equb</span>
+              <span className="brand-title"> Unity </span>
               
             </div>
           </Link>

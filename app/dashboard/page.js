@@ -207,7 +207,7 @@ export default async function DashboardPage() {
           )}
         </section>
 
-        {/* Upcoming Lottery Draws */}
+      
         <section className="card card-gold-accent">
           <div className="card-header-row">
             <div>
@@ -250,7 +250,7 @@ export default async function DashboardPage() {
         </section>
       </div>
 
-      {/* Equb Progress Overview Table */}
+    
       <section className="card">
         <div className="card-header-row">
           <div>
