@@ -1,0 +1,150 @@
+{
+  "users": [
+    {
+      "id": "usr_47a22ade",
+      "name": "tehehs",
+      "email": "tinna21abeba@gmail.com",
+      "passwordHash": "994b35347631e64912d219d96efd44e7:c771b6f39a2550965b152d8c7d7b8cc97f83a05e7d9e39e45fe0654b90680d7c50ac1da8b3adeff465f6378a9b1b31b60ec9313b8ed84681514254a13022286a"
+    },
+    {
+      "id": "usr_06aac514",
+      "name": "rewina kidane",
+      "email": "almaz@example.com",
+      "passwordHash": "3f967bba8106e1fd31f9a7c46d83b2c4:4df8746048db6748307c8bfb56691e81ecf349d8f333430c1a38269b50f2177b96cc13d8ee5d14281779dc2fdb1d989af59d74f79521189ee60a96957d74f714"
+    },
+    {
+      "id": "usr_db19a4ab",
+      "name": "robel guesh",
+      "email": "robi@gmail.com",
+      "passwordHash": "3d9abe35907958b9fc13a942e3c7d801:a246a109622cf1395d6da69aa07967fd201f9d4c9df2f91ae1204879929bf9158a876f672e97dd07f336148fc67cb2648507a93dc496e585131bc44f083bfd33"
+    }
+  ],
+  "equbs": [
+    {
+      "id": "eqb_46c1b8b7",
+      "ownerId": "usr_47a22ade",
+      "name": "Almaz Kebede",
+      "amount": 1000,
+      "frequency": "monthly",
+      "drawMethod": "lottery",
+      "startDate": "2017-02-13",
+      "members": [
+        {
+          "id": "mem_b9f0fba4",
+          "name": "goytom",
+          "phone": "+251998438170"
+        },
+        {
+          "id": "mem_0c60ea93",
+          "name": "rufta",
+          "phone": "+251998438178"
+        },
+        {
+          "id": "mem_270555fb",
+          "name": "menkem",
+          "phone": "+251998438172"
+        },
+        {
+          "id": "mem_1efd8622",
+          "name": "veri",
+          "phone": "+251998438171"
+        }
+      ],
+      "rounds": [
+        {
+          "number": 1,
+          "payments": {},
+          "winnerId": "mem_b9f0fba4",
+          "drawnAt": "2026-10-22T01:43:00.481Z",
+          "cycle": 1
+        },
+        {
+          "number": 2,
+          "cycle": 1,
+          "payments": {},
+          "winnerId": null,
+          "drawnAt": null
+        }
+      ],
+      "createdAt": "2026-10-21T04:56:36.127Z",
+      "payouts": [
+        {
+          "id": "pay_7d6548b6",
+          "roundNumber": 1,
+          "cycleNumber": 1,
+          "winnerId": "mem_b9f0fba4",
+          "winnerName": "goytom",
+          "potAmount": 4000,
+          "drawnAt": "2026-10-22T01:43:00.481Z",
+          "payoutStatus": "pending",
+          "payoutDate": null,
+          "transactionRef": "",
+          "notes": "Awaiting organizer verification and payout release."
+        }
+      ]
+    },
+    {
+      "id": "eqb_88bd7d5e",
+      "ownerId": "usr_47a22ade",
+      "planId": "monthly-standard",
+      "name": "semhal gobezay",
+      "amount": 2000,
+      "frequency": "monthly",
+      "drawMethod": "lottery",
+      "startDate": "2026-10-21",
+      "maxMembers": 25,
+      "currentCycle": 1,
+      "drawPaused": false,
+      "members": [
+        {
+          "id": "mem_33286fd8",
+          "name": "hana",
+          "phone": "+251998438170"
+        },
+        {
+          "id": "mem_dcc1024d",
+          "name": "melat",
+          "phone": "+251998438173"
+        },
+        {
+          "id": "mem_e84fb75d",
+          "name": "dagm",
+          "phone": "+251998438174"
+        }
+      ],
+      "rounds": [
+        {
+          "number": 1,
+          "cycle": 1,
+          "payments": {},
+          "winnerId": "mem_dcc1024d",
+          "drawnAt": "2026-10-22T01:46:15.218Z"
+        },
+        {
+          "number": 2,
+          "cycle": 1,
+          "payments": {},
+          "winnerId": null,
+          "drawnAt": null
+        }
+      ],
+      "payouts": [
+        {
+          "id": "pay_79ca4008",
+          "roundNumber": 1,
+          "cycleNumber": 1,
+          "winnerId": "mem_dcc1024d",
+          "winnerName": "melat",
+          "potAmount": 6000,
+          "drawnAt": "2026-10-22T01:46:15.218Z",
+          "payoutStatus": "paid",
+          "payoutDate": "2026-10-22T01:47:40.315Z",
+          "transactionRef": "1000256784567",
+          "notes": "Awaiting organizer verification and payout release."
+        }
+      ],
+      "completedCycles": [],
+      "createdAt": "2026-10-21T10:43:26.630Z"
+    }
+  ]
+}
