@@ -4,7 +4,7 @@ import { listEqubs } from "@/lib/queries";
 import { formatETB, formatDate, formatDateTime } from "@/lib/format";
 import { statusOf } from "@/lib/equb";
 import {
-  Trophy,
+   Trophy,
   History,
   ShieldCheck,
   CheckCircle2,
